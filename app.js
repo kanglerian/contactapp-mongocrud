@@ -31,26 +31,29 @@ app.use(session({
 }));
 app.use(flash());
 
+var mysql = require('mysql');
+const res = require('express/lib/response');
+
+var db = mysql.createConnection({
+  host: "localhost",
+  user: "root",
+  password: "",
+  database: "contactapp"
+});
+
+
 /* Halaman Home */
 app.get('/', (req,res) => {
-    const mahasiswa = [
-       {
-          nama: "Lerian Febriana",
-          email: "kanglerian@gmail.com",
-       },{
-          nama: "Sopyan Sauri",
-          email: "sopyan@gmail.com",
-       },{
-          nama: "Adhie Rachmat",
-          email: "adhie@gmail.com",
-       },
-    ];
-    res.render('index', {
-       nama: "Lerian Febriana",
-       title: "Home",
-       mahasiswa,
-       layout: 'layouts/main'
-    });
+   var query = "SELECT * FROM contact";
+   db.query(query, (err, result) => {
+      var hasil = result;
+      res.render('index', {
+         nama: "Lerian Febriana",
+         title: "Home",
+         hasil,
+         layout: 'layouts/main'
+      });
+   });
 });
 
 /* Halaman About */
@@ -63,19 +66,18 @@ app.get('/about', (req,res) => {
 });
 
 /* Halaman Contact */
-app.get('/contact', async(req,res) => {
-    /* Coba
-    Contact.find().then((contact) => {
-        res.send(contact);
-    }); */
-    const contacts = await Contact.find();
-    res.render('contact', {
-       nama: "Contact",
-       title: "Contact",
-       layout: 'layouts/main',
-       contacts,
-       msg: req.flash('msg'),
-    });
+app.get('/contact', (req,res) => {
+   var query = "SELECT * FROM contact";
+   db.query(query, (err, result) => {
+      var contacts = result
+      res.render('contact', {
+         nama: "Contact",
+         title: "Contact",
+         layout: 'layouts/main',
+         contacts,
+         msg: req.flash('msg'),
+      });
+   });
 });
 
 /* Tambah data */

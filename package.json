@@ -9,6 +9,7 @@
   "author": "kanglerian",
   "license": "ISC",
   "dependencies": {
+    "@googleapis/docs": "^0.4.1",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "ejs": "^3.1.6",
@@ -16,8 +17,11 @@
     "express-ejs-layouts": "^2.5.0",
     "express-session": "^1.17.2",
     "express-validator": "^6.12.0",
+    "google-spreadsheet": "^3.2.0",
+    "googleapis": "^100.0.0",
     "method-override": "^3.0.0",
     "mongoose": "^5.12.13",
+    "mysql": "^2.18.1",
     "nodemon": "^2.0.16"
   }
 }

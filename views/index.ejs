@@ -1,21 +1,19 @@
 <section>
     <div class="container">
         <div class="jumbotron">
-            <h1 class="display-4">Halo, <%= nama %>!</h1>
+            <h1 class="display-4">Halo</h1>
             <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
             <hr class="my-4">
             <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
             <h4>Daftar Mahasiswa</h4>
-            <% if(mahasiswa.length < 1) { %>
-                <p>Data mahasiswa masih kosong</p>
-            <% } else { %>
-                <ul>
-                <% mahasiswa.forEach(mhs => { %>
-                    <li>Nama: <%= mhs.nama %></li>
-                    <li>Email: <%= mhs.email %></li>
-                <% }) %>
-                </ul>
-            <% } %>
+            <% hasil.forEach(element => { %>
+            <ul>
+                <li><%= element.nama %></li>
+                <li><%= element.nohp %></li>
+                <li><%= element.email %></li>
+            </ul>
+            <% }) %>
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQwnxuDu8nf0tsISOILZiQ9DDKHQTdMaRmxRuKbPdFtkLuA-TT4fDTGki9zQ5NIkp_-Tb9FUWOIMQWy/pubhtml?gid=0&amp;single=true&amp;widget=true&amp;headers=false"></iframe>
             <p class="lead">
                 <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
             </p>
